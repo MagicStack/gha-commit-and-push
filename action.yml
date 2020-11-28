@@ -1,0 +1,32 @@
+name: 'Commit and push changes in a checkout.'
+author: 'MagicStack Inc.'
+inputs:
+  target_branch:
+    description: The name of the target branch to push to.
+    required: true
+  workdir:
+    description: Directory containing the repository.
+  commit_message:
+    description: The message in the commit.
+    required: true
+  github_username:
+    description: The name of the Github user to use for the commit.
+    required: true
+  github_token:
+    description: Github API token.
+    required: true
+  gpg_key:
+    required: false
+    description: GPG private key used to sign the commit.
+  gpg_key_id:
+    required: false
+    description: |
+      The id of a key used to sign the commit.  Specific subkeys
+      must end with '!'.  If not specified,
+      the master imported key would be used instead.
+  ssh_key:
+    description: SSH private key used to authenticate with Github.
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
